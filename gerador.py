@@ -2,6 +2,7 @@ import socket
 import _thread
 import time
 import random
+import pickle
 from queue import Queue
 
 lock = _thread.allocate_lock()
@@ -11,6 +12,8 @@ VALOR_MAX = 10
 VALOR_MIN = 3
 T_MAX = 5
 T_MIN = 2
+udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+destino = (SERVER, PORT)
 
 class informacao:
     def __init__(self, tipo, valor):
@@ -33,12 +36,8 @@ def gerador(id, lista):
     while(True):
         if(not fila.empty()):
             lock.acquire()
-            info = fila.get()
-            print("-------")
-            print(f"Sou o gerador: {id}")
-            print(info.tipo)
-            print(info.valor)
-            print("-------")
+            info = pickle.dumps(fila.get())
+            udp_socket.sendto(info, destino)
             lock.release()
 
 def main():    
