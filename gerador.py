@@ -50,8 +50,7 @@ def main():
     for i in range(num_geradores):
         lista = [random.randint(0,1) for _ in range(6)]
         _thread.start_new_thread(gerador, (i, lista))
-    while(True):
-        time.sleep(10)
+    encerrar = input("Pressione enter para encerrar!")
 
 if __name__ == "__main__":
     main()
