@@ -6,6 +6,14 @@ SERVER_TCP = "127.0.0.1"
 PORT_TCP = 7777
 ID = 0
 lock = _thread.allocate_lock()
+categorias = {
+    1: "Esportes",
+    2: "Novidades da Internet",
+    3: "Eletrônicos",
+    4: "Política",
+    5: "Negócios",
+    6: "Viagens"
+}
 
 class informacao:
     def __init__(self, seq, tipo, valor):
@@ -29,8 +37,8 @@ def receiveMessages(client, ID):
         msg = client.recv(2048)
         if(msg):
             info = pickle.loads(msg)
-            print(f"Sou o cliente {ID}: ")
-            print(f"Recebi uma mensagem do tipo {info.tipo}, contendo o valor {info.valor}")
+            print(f"Sou a mensagem de sequência: {info.seq}: ")
+            print(f"Recebi uma mensagem do tipo {categorias[info.tipo]}, contendo o valor {info.valor}")
 
 def main():
     comando = input("Digite 'N' para cadastrar um novo usuário: ")

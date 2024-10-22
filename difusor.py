@@ -58,17 +58,18 @@ def ouvinte(filas):
         lock.release()
 
 def disseminador(fila, id):
-    while(True):
+    while True:
         if not fila.empty():
             lock.acquire()
-            for i in clients_interests[id]:
+            info = pickle.dumps(fila.get())
+            lock.release()
+            
+            for client in clients_interests[id]:
                 try:
-                    info = pickle.dumps(fila.get())
-                    i.send(info)
+                    client.send(info)
                 except:
                     print("Não foi possível enviar a mensagem para um cliente...Desconectando!")
-                    removeClient(i)
-            lock.release()
+                    removeClient(client)
 
 def removeClient(client):
     for i in clients_interests:
