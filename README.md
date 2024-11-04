@@ -25,10 +25,19 @@ Os tipos de informações geradas são:
 
 ## Pré-requisitos
 
-- Python 3.x instalado na máquina.
-- Bibliotecas padrão de Python (não são necessárias bibliotecas externas).
+- Python 3.5 ou superior instalado na máquina.
+- Bibliotecas padrão Python.
+- Biblioteca PyQt5.
 
 ## Como Executar
+
+### Interface (PyQt5)
+
+1. Primeiramente para verificar se possuí a biblioteca PyQt5 instalada execute o seguinte comando via terminal:
+    pip show PyQt5
+
+2. Caso não localize a biblioteca execute o seguinte comando para instalação da biblioteca:
+    pip install PyQt5
 
 ### Gerador
 
