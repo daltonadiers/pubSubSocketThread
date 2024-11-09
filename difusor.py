@@ -1,16 +1,17 @@
 import socket
 import pickle
 import _thread
-import time
 from queue import Queue
 
+SERVERTCP = "127.0.0.1"
+PORTTCP = 7777
 udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 udp_socket.bind(("127.0.0.1", 5002))
+
+
 lock = _thread.allocate_lock()
 clients = []
 clients_interests = [[] for _ in range(1, 8)]
-SERVERTCP = "127.0.0.1"
-PORTTCP = 7777
 SEQUENCIA = 0
 
 class informacao:
@@ -42,9 +43,12 @@ def receiveRegister(client):
                 break
             elif(lista_numeros[0]==-2):
                 for i in range(1,len(lista_numeros)):
-                    clients_interests[lista_numeros[i]].append(client)
-                    print(f"sou a lista {lista_numeros[i]}")
-                    print(clients_interests[lista_numeros[i]])
+                    try:
+                        clients_interests[lista_numeros[i]].append(client)
+                        print(f"sou a lista {lista_numeros[i]}")
+                        print(clients_interests[lista_numeros[i]])
+                    except:
+                        print("Cliente não se inscreveu em um assunto válido!")
 
 def ouvinte(filas):
     while(True):

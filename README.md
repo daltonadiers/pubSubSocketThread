@@ -25,19 +25,10 @@ Os tipos de informações geradas são:
 
 ## Pré-requisitos
 
-- Python 3.5 ou superior instalado na máquina.
-- Bibliotecas padrão Python.
-- Biblioteca PyQt5.
+- Python 3.x instalado na máquina.
+- Bibliotecas padrão de Python (não são necessárias bibliotecas externas).
 
 ## Como Executar
-
-### Interface (PyQt5)
-
-1. Primeiramente para verificar se possuí a biblioteca PyQt5 instalada execute o seguinte comando via terminal:
-    pip show PyQt5
-
-2. Caso não localize a biblioteca execute o seguinte comando para instalação da biblioteca:
-    pip install PyQt5
 
 ### Gerador
 
@@ -81,6 +72,7 @@ O difusor receberá informações dos geradores e aguardará conexões dos consu
 2. Execute um ou mais geradores (`gerador.py`).
 3. Execute um ou mais consumidores (`consumidor.py`) e inscreva-os em diferentes tipos de informação.
 4. O difusor enviará as informações para os consumidores conforme os dados forem gerados.
+5. Para encerrar qualquer um dos processos, pressione 'ENTER' no terminal respectivo.
 
 ## Contato
 
